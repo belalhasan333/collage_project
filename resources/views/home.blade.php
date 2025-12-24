@@ -51,8 +51,6 @@
 						<div class="right-element">
 							<a href="{{ route('login') }}" class="user-account for-buy"><i
 									class="icon icon-user"></i><span>Account</span></a>
-                                    <a href="{{ route('register') }}" class="register btn btn-primary"><i
-                                        class="icon icon-register"></i><span>Register</span></a>
 							<a href="{{ route('cart.index') }}" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
 									$)</span></a>
 
@@ -87,18 +85,18 @@
 
 					</div>
                     {{-- navbar --}}
-                    					<div class="col-md-10">
+                    <div class="col-md-10">
 
 						<nav id="navbar">
 							<div class="main-menu stellarnav">
 								<ul class="menu-list">
-									<li class="menu-item active"><a href="#home">Home</a></li>
+									<li class="menu-item active"><a href="{{ route('home') }}">Home</a></li>
 									<li class="menu-item"><a href="{{ route('books.index') }}" class="nav-link">Books</a></li>
 									<li class="menu-item"><a href="#featured-books" class="nav-link">Products</a></li>
 									<li class="menu-item"><a href="#popular-books" class="nav-link">Popular</a></li>
 									<li class="menu-item"><a href="#special-offer" class="nav-link">Offer</a></li>
 									<li class="menu-item"><a href="#latest-blog" class="nav-link">Articles</a></li>
-									<li class="menu-item"><a href="#download-app" class="nav-link">Download App</a></li>
+									{{-- <li class="menu-item"><a href="#download-app" class="nav-link">Download App</a></li> --}}
 								</ul>
 
 								<div class="hamburger">
@@ -1013,38 +1011,6 @@
 						</div>
 					</div>
 
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="download-app" class="leaf-pattern-overlay">
-		<div class="corner-pattern-overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8">
-					<div class="row">
-
-						<div class="col-md-5">
-							<figure>
-								<img src="{{asset('Frontend/images/device.png')}}" alt="phone" class="single-image">
-							</figure>
-						</div>
-
-						<div class="col-md-7">
-							<div class="app-info">
-								<h2 class="section-title divider">Download our app now !</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus
-									liberolectus nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna.
-									Adipiscing fames semper erat ac in suspendisse iaculis.</p>
-								<div class="google-app">
-									<img src="{{asset('Frontend/images/google-play.jpg')}}" alt="google play">
-									<img src="{{asset('Frontend/images/app-store.jpg')}}" alt="app store">
-								</div>
-							</div>
-						</div>
-
-					</div>
 				</div>
 			</div>
 		</div>

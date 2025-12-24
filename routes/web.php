@@ -32,13 +32,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 /*
 |--------------------------------------------------------------------------
 | Profile
 |--------------------------------------------------------------------------
 */
 
-// Fixed route order: show should be after edit (to avoid edit being interpreted as user ID)
+// Fixed route order: show should be after edit
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
@@ -58,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/add/{book}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+    Route::post('/cart/remove/{book}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
 /*
@@ -74,7 +76,7 @@ Route::get('/books/{book}', [BuyerBookController::class, 'show'])->name('books.s
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('/admin/books', AdminBookController::class);
+    Route::resource('/admin/books', AdminBookController::class)->names('admin.books');
 });
 
 /*

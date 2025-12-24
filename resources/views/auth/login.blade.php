@@ -1,57 +1,111 @@
-@extends('master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
 
-@section('content')
-    <!-- Session Status -->
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('Backend/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Backend/assets/vendors/css/vendor.bundle.base.css') }}">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{{ asset('Backend/assets/css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('Backend/assets/images/favicon.png') }}" />
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required autofocus autocomplete="username" />
-            @error('email')
-                <div class="alert alert-danger">
-                    {{ $message }}
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+            <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+                <div class="card col-lg-4 mx-auto">
+                    <div class="card-body px-5 py-5">
+
+                        <h3 class="card-title text-left mb-3">Login</h3>
+
+                        <!-- Session Status -->
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email"
+                                       name="email"
+                                       value="{{ old('email') }}"
+                                       class="form-control p_input @error('email') is-invalid @enderror"
+                                       required autofocus>
+
+                                @error('email')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password"
+                                       name="password"
+                                       class="form-control p_input @error('password') is-invalid @enderror"
+                                       required>
+
+                                @error('password')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Remember Me -->
+                            <div class="form-group d-flex align-items-center justify-content-between">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="remember" class="form-check-input">
+                                        Remember me
+                                    </label>
+                                </div>
+
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}" class="forgot-pass">
+                                        Forgot password
+                                    </a>
+                                @endif
+                            </div>
+
+                            <!-- Login Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block enter-btn">
+                                    Login
+                                </button>
+                            </div>
+
+                            <!-- Register Link -->
+                            <p class="sign-up text-center mt-3">
+                                Don't have an Account?
+                                <a href="{{ route('register') }}"> Sign Up</a>
+                            </p>
+
+                        </form>
+
+                    </div>
                 </div>
-            @enderror
+            </div>
         </div>
+    </div>
+</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <label for="password" class="form-label">Password</label>
+<!-- plugins:js -->
+<script src="{{ asset('Backend/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+<script src="{{ asset('Backend/assets/js/off-canvas.js') }}"></script>
+<script src="{{ asset('Backend/assets/js/hoverable-collapse.js') }}"></script>
+<script src="{{ asset('Backend/assets/js/misc.js') }}"></script>
+<script src="{{ asset('Backend/assets/js/settings.js') }}"></script>
+<script src="{{ asset('Backend/assets/js/todolist.js') }}"></script>
 
-            <input type="password" name="password" class="form-control" required autocomplete="current-password" />
-            @error('password')
-                <div class="alert alert-danger">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="btn btn-link">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <button type="submit" class="btn btn-primary">
-                Login
-            </button>
-        </div>
-    </form>
-@endsection
+</body>
+</html>

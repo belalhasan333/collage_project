@@ -134,15 +134,15 @@
              <div class="collapse" id="auth">
                  <ul class="nav flex-column sub-menu">
                      <li class="nav-item"> <a class="nav-link"
-                             href="{{ asset('Backend/assets/pages/samples/blank-page.html') }}"> Blank Page </a></li>
+                             href="#"> Blank Page </a></li>
                      <li class="nav-item"> <a class="nav-link"
-                             href="{{ asset('Backend/assets/pages/samples/error-404.html') }}"> 404 </a></li>
+                             href="#"> 404 </a></li>
                      <li class="nav-item"> <a class="nav-link"
-                             href="{{ asset('Backend/assets/pages/samples/error-500.html') }}"> 500 </a></li>
+                             href="#"> 500 </a></li>
                      <li class="nav-item"> <a class="nav-link"
-                             href="{{ asset('Backend/assets/pages/samples/login.html') }}"> Login </a></li>
+                             href="{{ route('login') }}"> Login </a></li>
                      <li class="nav-item"> <a class="nav-link"
-                             href="{{ asset('Backend/assets/pages/samples/register.html') }}"> Register </a></li>
+                             href="{{ route('register') }}"> Register </a></li>
                  </ul>
              </div>
          </li>

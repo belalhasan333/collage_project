@@ -38,6 +38,8 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
+        Log::info("hit");
+
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
